@@ -35,3 +35,37 @@ a {
     color: $color-dark-blue;
   }
 }
+
+// ── Étoiles de notation ───────────────────────────────────
+.stars {
+  color: #f5a623;
+  font-size: 1.1rem;
+}
+
+// ── Card artisan ──────────────────────────────────────────
+.artisan-card {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 116, 199, 0.15);
+  }
+
+  .card-title {
+    color: $color-dark-blue;
+    font-weight: 600;
+  }
+
+  .card-specialite {
+    color: $color-primary;
+    font-size: 0.9rem;
+  }
+
+  .card-ville {
+    color: lighten($color-dark, 20%);
+    font-size: 0.85rem;
+  }
+}
