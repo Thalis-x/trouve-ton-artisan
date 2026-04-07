@@ -1,0 +1,16 @@
+// ── Variables de couleurs (charte Auvergne-Rhône-Alpes) ──
+$color-light-blue : #f1f8fc;
+$color-primary    : #0074c7;
+$color-dark-blue  : #00497c;
+$color-dark       : #384050;
+$color-red        : #cd2c2e;
+$color-green      : #82b864;
+
+// ── Override Bootstrap avec nos couleurs ─────────────────
+$primary   : $color-primary;
+$secondary : $color-dark;
+$danger    : $color-red;
+$success   : $color-green;
+
+// ── Import Bootstrap (doit être après les variables) ─────
+@import 'bootstrap/scss/bootstrap';
