@@ -148,3 +148,18 @@ a {
     color: $color-primary;
   }
 }
+// ── Page 404 ──────────────────────────────────────────────
+.page-404 {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  h1 {
+    font-size: 6rem;
+    font-weight: 700;
+    color: $color-primary;
+  }
+}
