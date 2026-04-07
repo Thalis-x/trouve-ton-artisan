@@ -85,3 +85,97 @@ const FicheArtisan = () => {
           )}
         </div>
       </div>
+      
+      <div className="row">
+        {/* ── À propos ─────────────────────────────────── */}
+        <div className="col-md-6 mb-4">
+          <div className="card p-4">
+            <h2 className="h4 mb-3">À propos</h2>
+            <p className="text-muted">
+              {artisan.a_propos || 'Aucune description disponible.'}
+            </p>
+          </div>
+        </div>
+
+        {/* ── Formulaire de contact ─────────────────────── */}
+        <div className="col-md-6 mb-4">
+          <div className="card p-4">
+            <h2 className="h4 mb-3">Contacter {artisan.nom}</h2>
+
+            {formSent ? (
+              <div className="alert alert-success">
+                Votre message a bien été envoyé ! L'artisan vous répondra sous 48h.
+              </div>
+            ) : (
+              <form onSubmit={handleFormSubmit} noValidate>
+                <div className="mb-3">
+                  <label htmlFor="nom" className="form-label">Votre nom</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="nom"
+                    name="nom"
+                    value={form.nom}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">Votre email</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="objet" className="form-label">Objet</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="objet"
+                    name="objet"
+                    value={form.objet}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="message" className="form-label">Message</label>
+                  <textarea
+                    className="form-control"
+                    id="message"
+                    name="message"
+                    rows={4}
+                    value={form.message}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </div>
+
+                <button type="submit" className="btn btn-primary w-100">
+                  Envoyer le message
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Retour ───────────────────────────────────── */}
+      <Link to={-1} className="btn btn-outline-secondary mt-2">
+        ← Retour
+      </Link>
+
+    </div>
+  );
+};
+
+export default FicheArtisan;
