@@ -69,3 +69,35 @@ a {
     font-size: 0.85rem;
   }
 }
+
+// ── Header ────────────────────────────────────────────────
+.navbar {
+  background-color: white !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+  .navbar-brand img {
+    height: 50px;
+  }
+
+  .nav-link {
+    color: $color-dark !important;
+    font-weight: 500;
+    &:hover, &.active {
+      color: $color-primary !important;
+    }
+  }
+}
+
+// ── Footer ────────────────────────────────────────────────
+.footer {
+  background-color: $color-dark;
+  color: white;
+  padding: 2rem 0;
+
+  a {
+    color: lighten($color-dark, 50%);
+    &:hover {
+      color: white;
+    }
+  }
+}
