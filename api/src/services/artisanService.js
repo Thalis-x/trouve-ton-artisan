@@ -60,18 +60,25 @@ const getAllArtisans = async ({ categorie, search } = {}) => {
     }
   }
 
+  // Si on filtre par catégorie, required: true fait un INNER JOIN
+  // ce qui exclut les artisans qui n'appartiennent pas à cette catégorie
+  // Sans ça Sequelize fait un LEFT JOIN et retourne null pour les autres
+  const hasFilter = Object.keys(categorieFilter).length > 0;
+
   return await Artisan.findAll({
     where,
     attributes: ARTISAN_LIST_FIELDS,
     include: [{
       model: Specialite,
       as: 'specialite',
+      required: hasFilter, 
       attributes: ['id', 'nom'],
       include: [{
         model: Categorie,
         as: 'categorie',
         attributes: ['id', 'nom'],
-        where: Object.keys(categorieFilter).length ? categorieFilter : undefined,
+        where: hasFilter ? categorieFilter : undefined,
+        required: hasFilter, 
       }],
     }],
     order: [['nom', 'ASC']],
