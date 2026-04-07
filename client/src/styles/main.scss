@@ -101,3 +101,50 @@ a {
     }
   }
 }
+// ── Section artisans du mois ──────────────────────────────
+.section-top {
+  background-color: white;
+  padding: 3rem 0;
+}
+
+// ── Section comment ça marche ─────────────────────────────
+.section-how {
+  padding: 3rem 0;
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+    background-color: $color-primary;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 0 auto 1rem;
+  }
+}
+// ── Page fiche artisan ────────────────────────────────────
+.fiche-artisan {
+  .fiche-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid $color-primary;
+  }
+
+  .fiche-photo-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: $color-light-blue;
+    border: 4px solid $color-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: $color-primary;
+  }
+}
