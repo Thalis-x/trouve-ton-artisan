@@ -17,7 +17,6 @@ app.use(helmet());
 // CORS : autorise uniquement le frontend React à appeler l'API
 app.use(cors({
   origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
-  methods: ['GET', 'POST'],
 }));
 
 // Rate limiting : max 100 requêtes par 15 minutes par IP
