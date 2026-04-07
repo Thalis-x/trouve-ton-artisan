@@ -14,3 +14,24 @@ $success   : $color-green;
 
 // ── Import Bootstrap (doit être après les variables) ─────
 @import 'bootstrap/scss/bootstrap';
+
+// ── Styles globaux ────────────────────────────────────────
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Graphik', sans-serif;
+  background-color: $color-light-blue;
+  color: $color-dark;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  &:hover {
+    color: $color-dark-blue;
+  }
+}
