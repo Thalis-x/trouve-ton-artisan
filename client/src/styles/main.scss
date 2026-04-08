@@ -81,7 +81,7 @@ a {
   .navbar-nav {
     width: 100%;
     justify-content: center; // ← centre les liens
-    
+
     //Gap uniquement en desktop 
     @media (min-width: 992px) {
       gap: 1rem;

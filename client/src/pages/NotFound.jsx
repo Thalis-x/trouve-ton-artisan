@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom';
 import image404   from '../assets/404.svg';
+import { useEffect } from 'react';
+
+
 
 const NotFound = () => {
+  useEffect(() => {
+  document.title = 'Page non trouvée | Trouve ton artisan';
+}, []);
   return (
     <section
       style={{

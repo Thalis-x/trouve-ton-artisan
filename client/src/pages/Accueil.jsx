@@ -14,6 +14,10 @@ const Accueil = () => {
       .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+  document.title = 'Trouve ton artisan | Région Auvergne-Rhône-Alpes';
+}, []);
+
   return (
     <>
       {/* ── Comment ça marche (Stepper) ────────────────── */}

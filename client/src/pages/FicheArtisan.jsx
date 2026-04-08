@@ -15,11 +15,14 @@ const FicheArtisan = () => {
   const [errors, setErrors]       = useState({});
 
   useEffect(() => {
-    getArtisanById(id)
-      .then(data => setArtisan(data))
-      .catch(() => setNotFound(true))
-      .finally(() => setLoading(false));
-  }, [id]);
+  getArtisanById(id)
+    .then(data => {
+      setArtisan(data);
+      document.title = `${data.nom} | Trouve ton artisan`;
+    })
+    .catch(() => setNotFound(true))
+    .finally(() => setLoading(false));
+}, [id]);
 
   const validerFormulaire = () => {
     const newErrors = {};

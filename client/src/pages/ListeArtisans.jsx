@@ -20,12 +20,18 @@ const ListeArtisans = () => {
       .finally(() => setLoading(false));
   }, [categorie, search]); // se relance à chaque changement de filtre
 
+
   // Titre dynamique selon le filtre actif
   const titre = search
     ? `Résultats pour "${search}"`
     : categorie
       ? categorie.charAt(0).toUpperCase() + categorie.slice(1)
       : 'Tous les artisans';
+    
+        useEffect(() => {
+        document.title = `${titre} | Trouve ton artisan`;
+    }, [titre]);
+
 
   return (
     <div className="container my-5">

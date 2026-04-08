@@ -1,4 +1,10 @@
+import { useEffect } from 'react';
+
 const PageLegale = ({ titre }) => {
+  useEffect(() => {
+  document.title = `${titre} | Trouve ton artisan`;
+}, [titre]);
+
   return (
     <div className="container my-5">
       <h1 className="mb-4">{titre}</h1>

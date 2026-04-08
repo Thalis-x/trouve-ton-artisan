@@ -30,8 +30,8 @@ const Header = () => {
       <div className="container">
 
         {/* Logo avec lien vers l'accueil */}
-        <Link className="navbar-brand" to="/">
-          <img src={logo} alt="Trouve ton artisan" />
+        <Link className="navbar-brand" to="/" onClick={() => window.scrollTo(0, 0)}>
+         <img src={logo} alt="Trouve ton artisan" />
         </Link>
 
         {/* Bouton hamburger pour mobile */}
