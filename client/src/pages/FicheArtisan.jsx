@@ -12,6 +12,7 @@ const FicheArtisan = () => {
   // États du formulaire de contact
   const [form, setForm]           = useState({ nom: '', email: '', objet: '', message: '' });
   const [formSent, setFormSent]   = useState(false);
+  const [errors, setErrors]       = useState({});
 
   useEffect(() => {
     getArtisanById(id)
@@ -20,17 +21,30 @@ const FicheArtisan = () => {
       .finally(() => setLoading(false));
   }, [id]);
 
+  const validerFormulaire = () => {
+    const newErrors = {};
+    if (!form.nom.trim())     newErrors.nom     = 'Le nom est obligatoire.';
+    if (!form.email.trim())   newErrors.email   = "L'email est obligatoire.";
+    else if (!/\S+@\S+\.\S+/.test(form.email))
+                              newErrors.email   = "L'email n'est pas valide.";
+    if (!form.objet.trim())   newErrors.objet   = "L'objet est obligatoire.";
+    if (!form.message.trim()) newErrors.message = 'Le message est obligatoire.';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleFormChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    // Efface l'erreur du champ modifié en temps réel
+    setErrors({ ...errors, [e.target.name]: '' });
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // Pour l'instant on simule l'envoi
-    // L'envoi d'email réel sera branché côté API plus tard
-    setFormSent(true);
+    if (validerFormulaire()) {
+      setFormSent(true);
+    }
   };
-
   if (loading) return (
     <div className="text-center my-5">
       <div className="spinner-border text-primary" role="status">
@@ -85,7 +99,7 @@ const FicheArtisan = () => {
           )}
         </div>
       </div>
-      
+
       <div className="row">
         {/* ── À propos ─────────────────────────────────── */}
         <div className="col-md-6 mb-4">
@@ -112,45 +126,48 @@ const FicheArtisan = () => {
                   <label htmlFor="nom" className="form-label">Votre nom</label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={`form-control ${errors.nom ? 'is-invalid' : ''}`}
                     id="nom"
                     name="nom"
                     value={form.nom}
                     onChange={handleFormChange}
                     required
-                  />
+                    />
+                    {errors.nom && <div className="invalid-feedback">{errors.nom}</div>}
                 </div>
 
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">Votre email</label>
                   <input
                     type="email"
-                    className="form-control"
+                    className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                     id="email"
                     name="email"
                     value={form.email}
                     onChange={handleFormChange}
                     required
                   />
+                  {errors.email && <div className="invalid-feedback">{errors.email}</div>}
                 </div>
 
                 <div className="mb-3">
                   <label htmlFor="objet" className="form-label">Objet</label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={`form-control ${errors.objet ? 'is-invalid' : ''}`}
                     id="objet"
                     name="objet"
                     value={form.objet}
                     onChange={handleFormChange}
                     required
                   />
+                  {errors.objet && <div className="invalid-feedback">{errors.objet}</div>}
                 </div>
 
                 <div className="mb-3">
                   <label htmlFor="message" className="form-label">Message</label>
                   <textarea
-                    className="form-control"
+                    className={`form-control ${errors.message ? 'is-invalid' : ''}`}
                     id="message"
                     name="message"
                     rows={4}
@@ -158,6 +175,7 @@ const FicheArtisan = () => {
                     onChange={handleFormChange}
                     required
                   />
+                  {errors.message && <div className="invalid-feedback">{errors.message}</div>}
                 </div>
 
                 <button type="submit" className="btn btn-primary w-100">
