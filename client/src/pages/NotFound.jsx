@@ -12,6 +12,7 @@ const NotFound = () => {
         Retour à l'accueil
       </Link>
     </div>
+    
   );
 };
 

@@ -35,7 +35,7 @@ const Footer = () => {
 
         </div>
 
-        <hr style={{ borderColor: '#4a5568' }} />
+        <hr style={{ borderColor: '#ffffff' }} />
         <p className="text-center mb-0" style={{ color: '#a0aec0', fontSize: '0.85rem' }}>
           © {new Date().getFullYear()} Région Auvergne-Rhône-Alpes — Tous droits réservés
         </p>

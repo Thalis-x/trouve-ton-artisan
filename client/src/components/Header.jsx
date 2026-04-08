@@ -66,18 +66,20 @@ const Header = () => {
           </ul>
 
           {/* Barre de recherche */}
-          <form className="d-flex" onSubmit={handleSearch} role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Boucherie..."
-              aria-label="Rechercher un artisan"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <button className="btn btn-primary" type="submit">
-              Rechercher
-            </button>
+          <form className="d-flex mt-2 mt-lg-0" onSubmit={handleSearch} role="search">
+            <div className="input-group">
+              <input
+                className="form-control me-2"
+               type="search"
+               placeholder="Boucherie..."
+               aria-label="Rechercher un artisan"
+                value={search}
+               onChange={(e) => setSearch(e.target.value)}
+             />
+              <button className="btn btn-primary" type="submit">
+                 Rechercher
+              </button>
+            </div>
           </form>
         </div>
 

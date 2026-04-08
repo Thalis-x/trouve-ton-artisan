@@ -80,8 +80,14 @@ a {
   }
   .navbar-nav {
     width: 100%;
-    justify-content: center; // ← centre les liens    
+    justify-content: center; // ← centre les liens
+    
+    //Gap uniquement en desktop 
+    @media (min-width: 992px) {
+      gap: 1rem;
+    } 
   }
+
   
   .nav-link {
     color: $color-dark !important;
@@ -91,18 +97,41 @@ a {
     }
   }
 }
+// Fix du formulaire de recherche en mode burger
+  form.d-flex {
+    margin-top: 0.5rem;
+    width: 100%;
+
+    input {
+      flex: 1;
+      min-width: 0; // ← empêche le dépassement
+    }
+
+    button {
+      white-space: nowrap; // ← empêche le bouton de se couper
+    }
+  }
 
 // ── Footer ────────────────────────────────────────────────
 .footer {
   background-color: $color-dark;
   color: white;
-  padding: 2rem 0;
+  padding: 1.5rem 0;
 
   a {
     color: lighten($color-dark, 50%);
+    font-size: 0.9rem;
     &:hover {
       color: white;
     }
+  }
+   h6 {
+    font-size: 0.8rem;
+  }
+
+  p, address {
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
   }
 }
 // ── Section artisans du mois ──────────────────────────────
