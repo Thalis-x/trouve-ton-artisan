@@ -70,7 +70,7 @@ const Header = () => {
             <input
               className="form-control me-2"
               type="search"
-              placeholder="Rechercher un artisan..."
+              placeholder="Boucherie..."
               aria-label="Rechercher un artisan"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
