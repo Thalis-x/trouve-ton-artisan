@@ -1,12 +1,8 @@
 // fichier qui centralise tous les appels à l'API
 import axios from 'axios';
 
-// L'URL de base de l'API — on la met dans une variable
-// pour pouvoir la changer facilement en production
-const API_URL = 'http://localhost:5000/api';
-
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: '/api', // plus besoin de l'URL complète grâce au proxy
 });
 
 // ── Catégories ────────────────────────────────────────────

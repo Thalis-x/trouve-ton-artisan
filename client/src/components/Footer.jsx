@@ -1,14 +1,22 @@
 import { Link } from 'react-router-dom';
+import logo     from '../assets/logo.png';
 
 const Footer = () => {
   return (
     <footer className="footer mt-auto">
       <div className="container">
-        <div className="row">
+        <div className="row align-items-start">
+
+          {/* Logo */}
+          <div className="col-md-3 mb-4">
+            <Link to="/">
+              <img src={logo} alt="Trouve ton artisan" style={{ height: '100px' }} />
+            </Link>
+          </div>
 
           {/* Liens légaux */}
-          <div className="col-md-6 mb-3">
-            <h6 className="text-uppercase fw-bold mb-3" style={{color: '#a0aec0'}}>
+          <div className="col-md-5 mb-3">
+            <h6 className="text-uppercase fw-bold mb-3" style={{ color: '#a0aec0' }}>
               Informations légales
             </h6>
             <ul className="list-unstyled">
@@ -20,11 +28,11 @@ const Footer = () => {
           </div>
 
           {/* Contact antenne Lyon */}
-          <div className="col-md-6 mb-3">
-            <h6 className="text-uppercase fw-bold mb-3" style={{color: '#a0aec0'}}>
+          <div className="col-md-4 mb-3">
+            <h6 className="text-uppercase fw-bold mb-3" style={{ color: '#a0aec0' }}>
               Antenne de Lyon
             </h6>
-            <address className="mb-0" style={{fontStyle: 'normal'}}>
+            <address style={{ fontStyle: 'normal' }}>
               <p className="mb-1">101 cours Charlemagne</p>
               <p className="mb-1">CS 20033</p>
               <p className="mb-1">69269 LYON CEDEX 02</p>
@@ -35,12 +43,10 @@ const Footer = () => {
 
         </div>
 
-        {/* Copyright */}
-        <hr style={{borderColor: '#4a5568'}} />
-        <p className="text-center mb-0" style={{color: '#a0aec0', fontSize: '0.85rem'}}>
+        <hr style={{ borderColor: '#4a5568' }} />
+        <p className="text-center mb-0" style={{ color: '#a0aec0', fontSize: '0.85rem' }}>
           © {new Date().getFullYear()} Région Auvergne-Rhône-Alpes — Tous droits réservés
         </p>
-
       </div>
     </footer>
   );
