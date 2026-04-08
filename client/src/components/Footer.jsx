@@ -7,13 +7,6 @@ const Footer = () => {
       <div className="container">
         <div className="row align-items-start">
 
-          {/* Logo */}
-          <div className="col-md-3 mb-4">
-            <Link to="/">
-              <img src={logo} alt="Trouve ton artisan" style={{ height: '100px' }} />
-            </Link>
-          </div>
-
           {/* Liens légaux */}
           <div className="col-md-5 mb-3">
             <h6 className="text-uppercase fw-bold mb-3" style={{ color: '#a0aec0' }}>
