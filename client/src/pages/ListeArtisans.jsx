@@ -1,16 +1,32 @@
-import { useEffect, useState }    from 'react';
-import { useSearchParams, Link }  from 'react-router-dom';
-import { getArtisans }            from '../services/api';
-import ArtisanCard                from '../components/ArtisanCard';
+import { useEffect, useState }                from 'react';
+import { useSearchParams, Link, useNavigate } from 'react-router-dom';
+import { getArtisans }                        from '../services/api';
+import ArtisanCard                            from '../components/ArtisanCard';
+
+// Correspondance slug URL → nom affiché
+const slugMap = {
+  'batiment'    : 'Bâtiment',
+  'services'    : 'Services',
+  'fabrication' : 'Fabrication',
+  'alimentation': 'Alimentation',
+};
 
 const ListeArtisans = () => {
-  const [artisans, setArtisans]       = useState([]);
-  const [loading, setLoading]         = useState(true);
-  const [searchParams]                = useSearchParams();
+  const navigate                          = useNavigate();
+  const [artisans, setArtisans]           = useState([]);
+  const [loading, setLoading]             = useState(true);
+  const [searchParams]                    = useSearchParams();
 
   // Récupère les paramètres de l'URL (?categorie=... ou ?search=...)
   const categorie = searchParams.get('categorie');
   const search    = searchParams.get('search');
+
+  // Si la catégorie dans l'URL n'existe pas → redirige vers 404
+  useEffect(() => {
+    if (categorie && !slugMap[categorie.toLowerCase()]) {
+      navigate('/404');
+    }
+  }, [categorie]);
 
   useEffect(() => {
     setLoading(true);
@@ -20,18 +36,16 @@ const ListeArtisans = () => {
       .finally(() => setLoading(false));
   }, [categorie, search]); // se relance à chaque changement de filtre
 
-
   // Titre dynamique selon le filtre actif
   const titre = search
     ? `Résultats pour "${search}"`
     : categorie
-      ? categorie.charAt(0).toUpperCase() + categorie.slice(1)
+      ? slugMap[categorie.toLowerCase()]
       : 'Tous les artisans';
-    
-        useEffect(() => {
-        document.title = `${titre} | Trouve ton artisan`;
-    }, [titre]);
 
+  useEffect(() => {
+    document.title = `${titre} | Trouve ton artisan`;
+  }, [titre]);
 
   return (
     <div className="container my-5">
