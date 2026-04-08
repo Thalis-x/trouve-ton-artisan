@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api', // plus besoin de l'URL complète grâce au proxy
+  baseURL: import.meta.env.VITE_API_URL || '/api',
 });
 
 // ── Catégories ────────────────────────────────────────────
