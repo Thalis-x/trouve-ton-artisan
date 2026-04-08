@@ -76,9 +76,13 @@ a {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 
   .navbar-brand img {
-    height: 150px;
+    height: 120px;
   }
-
+  .navbar-nav {
+    width: 100%;
+    justify-content: center; // ← centre les liens    
+  }
+  
   .nav-link {
     color: $color-dark !important;
     font-weight: 500;

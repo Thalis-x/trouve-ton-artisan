@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
-import logo     from '../assets/logo.png';
 
 const Footer = () => {
   return (
     <footer className="footer mt-auto">
       <div className="container">
-        <div className="row align-items-start">
+        <div className="row justify-content-center text-center">
 
           {/* Liens légaux */}
-          <div className="col-md-5 mb-3">
+          <div className="col-md-5 mb-4">
             <h6 className="text-uppercase fw-bold mb-3" style={{ color: '#a0aec0' }}>
               Informations légales
             </h6>
@@ -21,7 +20,7 @@ const Footer = () => {
           </div>
 
           {/* Contact antenne Lyon */}
-          <div className="col-md-4 mb-3">
+          <div className="col-md-4 mb-4">
             <h6 className="text-uppercase fw-bold mb-3" style={{ color: '#a0aec0' }}>
               Antenne de Lyon
             </h6>
