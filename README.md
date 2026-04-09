@@ -80,7 +80,7 @@ Le site est accessible sur `http://localhost:3000`
 ---
 
 ## Structure du projet
-
+```bash
 trouve-ton-artisan/
 ├── api/                        # Backend Node.js/Express
 │   ├── src/
@@ -108,6 +108,7 @@ trouve-ton-artisan/
 │
 └── README.md
 
+```bash
 ---
 
 ## Endpoints API
