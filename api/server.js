@@ -50,14 +50,17 @@ app.use((err, req, res, next) => {
 });
 
 // ── Connexion BDD puis démarrage du serveur ───────────────
-sequelize.authenticate()
-  .then(() => {
+const connectWithRetry = async () => {
+  try {
+    await sequelize.authenticate();
     console.log('Connexion MySQL réussie');
     app.listen(PORT, () => {
       console.log(`Serveur démarré sur http://localhost:${PORT}`);
     });
-  })
-  .catch((err) => {
-    console.error('Impossible de se connecter à MySQL :', err.message);
-    process.exit(1);
-  });
+  } catch (err) {
+    console.error('Connexion échouée, nouvelle tentative dans 5 secondes...', err.message);
+    setTimeout(connectWithRetry, 5000);
+  }
+};
+
+connectWithRetry();

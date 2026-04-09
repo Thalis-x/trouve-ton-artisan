@@ -11,6 +11,15 @@ const sequelize = new Sequelize(
     port: process.env.DB_PORT,
     dialect: 'mysql',       // on précise qu'on utilise MySQL
     logging: false,         // désactive les logs SQL dans le terminal (plus lisible)
+     pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,    // libère les connexions inactives après 10 secondes
+    },
+    dialectOptions: {
+      connectTimeout: 60000, // attend 60 secondes avant de timeout
+    },
   }
 );
 
